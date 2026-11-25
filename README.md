@@ -34,7 +34,7 @@ This repository documents a controlled network traffic analysis performed in a l
 * **Affected Traffic / Component:** Unencrypted HTTP requests/responses (`http://`)
 * **Risk:** **High** — Plaintext HTTP transmits headers, URLs, and authentication data (such as HTTP Basic Auth) without encryption, allowing anyone on the network path or local interface to read sensitive data.
 * **Evidence:** Filtered HTTP traffic in Wireshark (`http`) showing plaintext request headers and credentials.
-  ![Wireshark HTTP Analysis](evidence/02_cleartext_http_auth.jpg)
+  ![Wireshark HTTP Analysis](evidence/02_cleartext_http_auth.png)
 * **Recommended Mitigation:**
   1. Enforce HTTPS/TLS across web services and redirect all HTTP traffic to HTTPS.
   2. Avoid sending credentials or session tokens over unencrypted channels.
@@ -45,7 +45,7 @@ This repository documents a controlled network traffic analysis performed in a l
 * **Affected Traffic / Component:** TCP control plane (`tcp.flags.syn==1 && tcp.flags.ack==0`)
 * **Risk:** **Medium** — Rapid or repeated SYN packets without completed handshakes can indicate reconnaissance, port scanning, or abnormal connection churn that warrants monitoring and rate limiting.
 * **Evidence:** Filtered TCP SYN packets in Wireshark (`tcp.flags.syn==1 && tcp.flags.ack==0`).
-  ![Wireshark SYN Pattern](evidence/03_syn_scan_pattern.jpg)
+  ![Wireshark SYN Pattern](evidence/03_syn_scan_pattern.png)
 * **Recommended Mitigation:**
   1. Monitor unusual SYN rates or port-sweep behavior in IDS/IPS or firewall logs.
   2. Restrict exposed ports using host/network firewall rules and enable SYN flood protections where appropriate.
@@ -56,7 +56,7 @@ This repository documents a controlled network traffic analysis performed in a l
 * **Affected Traffic / Component:** Overall network traffic mix (Protocol Hierarchy)
 * **Risk:** **Low / Medium** — Mixed protocol usage and legacy/unencrypted protocols increase visibility gaps and attack surface if legacy services remain enabled.
 * **Evidence:** Wireshark **Statistics > Protocol Hierarchy** view.
-  ![Protocol Hierarchy](evidence/01_protocol_hierarchy.jpg)
+  ![Protocol Hierarchy](evidence/01_protocol_hierarchy.png)
 * **Recommended Mitigation:**
   1. Baseline normal protocol distributions for your environment so anomalies stand out.
   2. Disable unnecessary legacy or cleartext protocols.
