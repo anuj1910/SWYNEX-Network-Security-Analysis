@@ -11,7 +11,7 @@
 This repository documents a controlled network traffic analysis performed in a local lab environment using `tcpdump` and Wireshark. The objective was to identify observed network protocols, flag suspicious or high-risk communication patterns—such as cleartext HTTP authentication and SYN probing bursts—and recommend actionable defensive controls.
 
 ## 2. Scope & Methodology
-* **Capture Source:** Controlled local Kali Linux lab packet capture (`captures/lab_traffic.pcap`)
+* **Capture Source:** Controlled local Kali Linux lab packet capture (`lab_traffic.pcap`)
 * **Tools Used:** `tcpdump`, Wireshark (`http` and `tcp.flags.syn==1 && tcp.flags.ack==0` display filters, Protocol Hierarchy)
 * **Methodology:** Protocol enumeration, filter-based inspection of cleartext and connection-setup traffic, risk evaluation, and defensive recommendation mapping.
 
